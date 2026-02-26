@@ -126,13 +126,13 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="data">Data</h2>
 <p>This report analyzes a sample of World Development Indicators (2022) <span class="citation" data-cites="worldbank_wdi">(<a href="#ref-worldbank_wdi" role="doc-biblioref">World Bank 2022</a>)</span>.<br>
 The dataset includes 217 countries and 14 variables.</p>
-<div id="d460042d" class="cell" data-execution_count="1">
+<div id="0210853a" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"wdi.csv"</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="33">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
@@ -251,9 +251,9 @@ The dataset includes 217 countries and 14 variables.</p>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<div id="bd95a1f5" class="cell" data-execution_count="2">
+<div id="0aea3803" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">"gdp_per_capita"</span>, <span class="st">"life_expectancy"</span>, <span class="st">"income_inequality"</span>]].describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="34">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 
 
@@ -322,8 +322,8 @@ The dataset includes 217 countries and 14 variables.</p>
 </div>
 </div>
 <p>The dataset includes 203 observations for GDP per capita, 209 for life expectancy, and only 28 for income inequality. This large difference in sample size suggests substantial missing data, especially for income inequality, which limits the reliability of comparisons involving that variable. The average GDP per capita is approximately $20,346, while the median is much lower at about $7,588, indicating a highly right-skewed distribution driven by a small number of very wealthy countries. Life expectancy is more tightly distributed, with a mean of about 72.4 years and relatively low variation. Income inequality has a mean of 38.3, with moderate spread across available countries.</p>
-<div id="03ed5f9c" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display" data-execution_count="35">
+<div id="8ccd6831" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>count       203.000000
 mean      20345.707649
 std       31308.942225
@@ -336,8 +336,8 @@ Name: gdp_per_capita, dtype: float64</code></pre>
 </div>
 </div>
 <p>GDP per capita shows a very uneven distribution across countries. The mean value is approximately $20,346, but the median is only about $7,588, which suggests strong right skewness. The maximum value reaches $240,862, while the minimum is only $259, indicating extremely large disparities in income levels. The standard deviation (about $31,309) is even larger than the mean, further confirming substantial variation. The wide gap between the 25th percentile ($2,571) and the 75th percentile ($25,983) highlights global income inequality between lower-income and higher-income economies.</p>
-<div id="4149e38a" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-display" data-execution_count="36">
+<div id="c7762a41" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>count    209.000000
 mean      72.416519
 std        7.713322
@@ -350,8 +350,8 @@ Name: life_expectancy, dtype: float64</code></pre>
 </div>
 </div>
 <p>Life expectancy is much more concentrated than GDP per capita. The mean is approximately 72.4 years and the median is about 73.5 years, suggesting a relatively symmetric distribution. Values range from about 53.0 years to 85.4 years, showing noticeable but not extreme variation. The standard deviation is about 7.7 years, indicating moderate dispersion across countries. Compared to GDP, life expectancy appears less skewed and more clustered around the middle range, reflecting global improvements in health outcomes.</p>
-<div id="7dd27a6d" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display" data-execution_count="37">
+<div id="07c87410" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>count    28.000000
 mean     38.328571
 std       7.721488
@@ -402,7 +402,7 @@ Figure&nbsp;2: Top 10 countries by GDP per capita (2022). Source: World Bank WDI
 Table&nbsp;1: Key statistics for selected indicators (2022). Source: World Bank WDI sample.
 </figcaption>
 <div aria-describedby="tbl-keystats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="40">
+<div class="cell-output cell-output-display" data-execution_count="16">
 <div>
 
 
