@@ -91,6 +91,7 @@ keystats
 The scatter plot in @fig-gdp-life shows a clear positive relationship between GDP per capita and life expectancy. As income increases, life expectancy generally rises, though the relationship appears nonlinear and flattens at higher income levels. Countries with very low GDP per capita tend to have substantially lower life expectancy, while wealthier countries cluster between roughly 78 and 85 years. The use of a log scale makes this pattern more visible and highlights diminishing returns to income at higher levels.
 
 Figure @fig-top10-gdp shows that a small group of countries have extremely high GDP per capita, with Monaco and Liechtenstein standing far above most others. This confirms the strong right skew observed in the summary statistics, where the mean GDP per capita is much higher than the median. However, the analysis has several limitations. Income inequality data are missing for most countries, reducing the reliability of comparisons involving that variable. Additionally, the scatter plot shows correlation rather than causation, and other factors such as healthcare systems, education, and public policy likely influence life expectancy beyond income alone.
+The relationship between income and life expectancy has been widely studied in demographic research [@preston1975].
 
 
 
