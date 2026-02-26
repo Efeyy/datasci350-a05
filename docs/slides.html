@@ -29,7 +29,27 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto-06e768f098560084c2d7120de8ad04fb.css">
   <link href="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -143,13 +163,13 @@ YOUR NAME
 <section id="what-i-analyzed" class="slide level2">
 <h2>What I analyzed</h2>
 <ul>
-<li>Data: WDI-style indicators (2022) <span class="citation" data-cites="worldbank_wdi">(<a href="" role="doc-biblioref" onclick="return false;"><strong>worldbank_wdi?</strong></a>)</span></li>
+<li>Data: WDI-style indicators (2022) <span class="citation" data-cites="worldbank_wdi">(<a href="#/scatter-gdp-vs-life-expectancy" role="doc-biblioref" onclick="">World Bank 2022</a>)</span></li>
 <li>Focus: <code>gdp_per_capita</code>, <code>life_expectancy</code>, <code>income_inequality</code></li>
 </ul>
 </section>
-<section id="scatter-gdp-vs-life-expectancy" class="slide level2">
+<section id="scatter-gdp-vs-life-expectancy" class="slide level2 smaller scrollable">
 <h2>Scatter: GDP vs Life expectancy</h2>
-<div id="31d415b5" class="cell" data-execution_count="1">
+<div id="0d8fe9c6" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -158,7 +178,7 @@ YOUR NAME
 </div>
 </div>
 </div>
-<div id="59d652f3" class="cell" data-execution_count="2">
+<div id="9d818502" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -174,6 +194,11 @@ YOUR NAME
 <h3 id="limitation">Limitation</h3>
 <p>Income inequality data are missing for most countries, limiting the strength of conclusions involving that variable. Additionally, the observed relationship between GDP and life expectancy shows correlation, not causation, and other factors such as healthcare access and education likely play important roles.</p>
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-worldbank_wdi" class="csl-entry" role="listitem">
+World Bank. 2022. <span>“World Development Indicators.”</span> <a href="https://databank.worldbank.org/source/world-development-indicators">https://databank.worldbank.org/source/world-development-indicators</a>.
+</div>
+</div>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
