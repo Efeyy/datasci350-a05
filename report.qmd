@@ -1,0 +1,98 @@
+---
+title: "Assignment 05 Report"
+format: html
+bibliography: references.bib
+---
+
+## Data
+
+This report analyzes a sample of World Development Indicators (2022) [@worldbank_wdi].  
+The dataset includes 217 countries and 14 variables.
+
+```{python}
+#| echo: true
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("wdi.csv")
+df.head()
+
+```
+## Summary
+```{python}
+#| echo: true
+df[["gdp_per_capita", "life_expectancy", "income_inequality"]].describe()
+```
+The dataset includes 203 observations for GDP per capita, 209 for life expectancy, and only 28 for income inequality. This large difference in sample size suggests substantial missing data, especially for income inequality, which limits the reliability of comparisons involving that variable. The average GDP per capita is approximately $20,346, while the median is much lower at about $7,588, indicating a highly right-skewed distribution driven by a small number of very wealthy countries. Life expectancy is more tightly distributed, with a mean of about 72.4 years and relatively low variation. Income inequality has a mean of 38.3, with moderate spread across available countries.
+
+```{python}
+#| echo: false
+df["gdp_per_capita"].describe()
+```
+GDP per capita shows a very uneven distribution across countries. The mean value is approximately $20,346, but the median is only about $7,588, which suggests strong right skewness. The maximum value reaches $240,862, while the minimum is only $259, indicating extremely large disparities in income levels. The standard deviation (about $31,309) is even larger than the mean, further confirming substantial variation. The wide gap between the 25th percentile ($2,571) and the 75th percentile ($25,983) highlights global income inequality between lower-income and higher-income economies.
+
+```{python}
+#| echo: false
+df["life_expectancy"].describe()
+```
+Life expectancy is much more concentrated than GDP per capita. The mean is approximately 72.4 years and the median is about 73.5 years, suggesting a relatively symmetric distribution. Values range from about 53.0 years to 85.4 years, showing noticeable but not extreme variation. The standard deviation is about 7.7 years, indicating moderate dispersion across countries. Compared to GDP, life expectancy appears less skewed and more clustered around the middle range, reflecting global improvements in health outcomes.
+
+
+```{python}
+#| echo: false
+df["income_inequality"].describe()
+```
+Income inequality has only 28 non-missing observations, which significantly limits the scope of analysis. The mean inequality index is approximately 38.3, with values ranging from 26.4 to 54.8. The distribution appears relatively centered, as the median (38.1) is very close to the mean. The standard deviation of about 7.7 suggests moderate variation among countries with available data. However, because of the small sample size, conclusions regarding global inequality patterns should be interpreted cautiously.
+
+
+## Visualization
+```{python}
+#| echo: false
+#| label: fig-gdp-life
+#| fig-cap: "GDP per capita vs life expectancy (2022). Source: World Bank WDI sample."
+x = df["gdp_per_capita"]
+y = df["life_expectancy"]
+
+plt.figure()
+plt.scatter(x, y)
+plt.xscale("log")
+plt.xlabel("GDP per capita (log scale)")
+plt.ylabel("Life expectancy (years)")
+plt.title("GDP per capita vs Life expectancy")
+plt.show()
+
+```
+```{python}
+#| echo: false
+#| label: fig-top10-gdp
+#| fig-cap: "Top 10 countries by GDP per capita (2022). Source: World Bank WDI sample."
+top10 = df[["country", "gdp_per_capita"]].dropna().sort_values("gdp_per_capita", ascending=False).head(10)
+
+plt.figure()
+plt.bar(top10["country"], top10["gdp_per_capita"])
+plt.xticks(rotation=45, ha="right")
+plt.xlabel("Country")
+plt.ylabel("GDP per capita")
+plt.title("Top 10 GDP per capita")
+plt.tight_layout()
+plt.show()
+
+```
+```{python}
+#| echo: false
+#| label: tbl-keystats
+#| tbl-cap: "Key statistics for selected indicators (2022). Source: World Bank WDI sample."
+cols = ["gdp_per_capita", "life_expectancy", "income_inequality"]
+keystats = df[cols].describe().loc[["mean","std","min","max"]].T
+keystats
+
+```
+
+The scatter plot in @fig-gdp-life shows a clear positive relationship between GDP per capita and life expectancy. As income increases, life expectancy generally rises, though the relationship appears nonlinear and flattens at higher income levels. Countries with very low GDP per capita tend to have substantially lower life expectancy, while wealthier countries cluster between roughly 78 and 85 years. The use of a log scale makes this pattern more visible and highlights diminishing returns to income at higher levels.
+
+Figure @fig-top10-gdp shows that a small group of countries have extremely high GDP per capita, with Monaco and Liechtenstein standing far above most others. This confirms the strong right skew observed in the summary statistics, where the mean GDP per capita is much higher than the median. However, the analysis has several limitations. Income inequality data are missing for most countries, reducing the reliability of comparisons involving that variable. Additionally, the scatter plot shows correlation rather than causation, and other factors such as healthcare systems, education, and public policy likely influence life expectancy beyond income alone.
+
+
+
+## References
+

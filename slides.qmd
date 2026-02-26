@@ -1,0 +1,65 @@
+---
+title: "WDI 2022: Income, Health, Inequality"
+author: "YOUR NAME"
+date: "2026-02-25"
+format:
+  revealjs:
+    theme: moon
+    transition: fade
+    slide-number: true
+bibliography: references.bib
+---
+
+## What I analyzed
+
+-   Data: WDI-style indicators (2022) [@worldbank_wdi]
+-   Focus: `gdp_per_capita`, `life_expectancy`, `income_inequality`
+
+## Scatter: GDP vs Life expectancy
+
+```{python}
+
+#| echo: false
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("wdi.csv")
+
+plt.figure()
+plt.scatter(df["gdp_per_capita"], df["life_expectancy"])
+plt.xscale("log")
+plt.xlabel("GDP per capita (log)")
+plt.ylabel("Life expectancy")
+plt.title("GDP per capita vs Life expectancy")
+plt.show()
+```
+
+```{python}
+#| echo: false
+top10 = (
+    df[["country", "gdp_per_capita"]]
+    .dropna()
+    .sort_values("gdp_per_capita", ascending=False)
+    .head(10)
+)
+
+plt.figure()
+plt.bar(top10["country"], top10["gdp_per_capita"])
+plt.xticks(rotation=45, ha="right")
+plt.title("Top 10 GDP per capita")
+plt.tight_layout()
+plt.show()
+
+```
+
+### Takeaway 1
+
+There is a strong positive relationship between GDP per capita and life expectancy. Countries with higher income levels tend to have longer life expectancy, though the relationship flattens at higher income levels, suggesting diminishing returns to wealth.
+
+### Takeaway 2
+
+GDP per capita is highly skewed, with a small number of countries (e.g., Monaco and Liechtenstein) having extremely high income levels. In contrast, life expectancy is more evenly distributed across countries.
+
+### Limitation
+
+Income inequality data are missing for most countries, limiting the strength of conclusions involving that variable. Additionally, the observed relationship between GDP and life expectancy shows correlation, not causation, and other factors such as healthcare access and education likely play important roles.
