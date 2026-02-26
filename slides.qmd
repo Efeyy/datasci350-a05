@@ -1,6 +1,6 @@
 ---
 title: "WDI 2022: Income, Health, Inequality"
-author: "YOUR NAME"
+author: "Fei Yi"
 date: "2026-02-25"
 format:
   revealjs:
